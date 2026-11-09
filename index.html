@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f172a">
+  <title>تقويم حضور الأطباء | عيادة التشخيص</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<base target="_blank">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar no-print">
+      <div class="brand">
+        <div class="brand-mark">+</div>
+        <div><h1>تقويم حضور الأطباء</h1><p>إدارة جدول عيادة التشخيص</p></div>
+      </div>
+      <div class="connection-status" id="connectionStatus"><span class="status-dot"></span><span>غير متصل</span></div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div>
+          <span class="eyebrow">ATTENDANCE PLANNER</span>
+          <h2>نظّم حضور الأطباء طوال الشهر</h2>
+          <p>أضف أطباء كل يوم، سجّل الحضور والغياب بالضغط على اسم الطبيب، وتابع أيام التعويض في مكان واحد.</p>
+        </div>
+        <div class="month-controls no-print">
+          <button class="icon-btn" id="prevMonth" aria-label="الشهر السابق">‹</button>
+          <div class="month-label"><strong id="monthTitle">—</strong><span id="monthSubtitle">—</span></div>
+          <button class="icon-btn" id="nextMonth" aria-label="الشهر التالي">›</button>
+          <button class="today-btn" id="currentMonth">هذا الشهر</button>
+        </div>
+      </section>
+
+      <section class="toolbar no-print">
+        <div class="search-wrap">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="ابحث باسم الطبيب..." autocomplete="off">
+          <button id="clearSearch" title="مسح البحث" aria-label="مسح البحث">×</button>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn btn-secondary" id="printMonth">طباعة الشهر <span>↗</span></button>
+          <button class="btn btn-primary" id="saveAll">حفظ التغييرات <span>✓</span></button>
+        </div>
+      </section>
+
+      <section class="summary-grid">
+        <article class="summary-card"><div class="summary-icon cyan">▦</div><div><span>أيام العمل هذا الشهر</span><strong id="workingDays">—</strong></div></article>
+        <article class="summary-card"><div class="summary-icon purple">♙</div><div><span>الأطباء في الجدول</span><strong id="doctorCount">0</strong></div></article>
+        <article class="summary-card"><div class="summary-icon green">↻</div><div><span>أيام التعويض المسجلة</span><strong id="replacementCount">0</strong></div></article>
+        <article class="summary-card"><div class="summary-icon green2">✓</div><div><span>أيام حضور مؤكدة</span><strong id="presentCount">0</strong></div></article>
+        <article class="summary-card"><div class="summary-icon red">✗</div><div><span>أيام غياب مسجلة</span><strong id="absentCount">0</strong></div></article>
+      </section>
+
+      <section class="panel calendar-panel">
+        <div class="section-heading">
+          <div><span class="section-kicker">MONTHLY SCHEDULE</span><h3>جدول الحضور الشهري</h3><p>كل صف يمثل طبيبًا في يومه الأسبوعي المحدد — اضغط على اسم الطبيب في يومه لتسجيل الحضور ✓ أو الغياب ✗.</p></div>
+          <button class="btn btn-add no-print" id="addDoctor">＋ إضافة طبيب</button>
+        </div>
+        <div class="legend no-print">
+          <span><i class="legend-dot scheduled"></i> يوم الحضور المقرر</span>
+          <span><i class="legend-dot today"></i> تاريخ اليوم</span>
+          <span><i class="legend-dot present"></i> حاضر ✓</span>
+          <span><i class="legend-dot absent"></i> غائب ✗</span>
+        </div>
+        <div class="calendar-scroll">
+          <table id="calendarTable" class="calendar-table">
+            <thead id="calendarHead"></thead>
+            <tbody id="calendarBody"></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="emptySchedule" hidden>
+          <div class="empty-illustration">▦</div><h4>لا يوجد أطباء مضافون لهذا الشهر</h4><p>ابدأ بإضافة أسماء الأطباء وتحديد يوم حضور كل طبيب.</p>
+          <button class="btn btn-primary no-print" id="emptyAddDoctor">إضافة أول طبيب</button>
+        </div>
+      </section>
+
+      <section class="panel replacements-panel">
+        <div class="section-heading">
+          <div><span class="section-kicker">MAKE-UP ATTENDANCE</span><h3>أيام التعويض</h3><p>سجّل اليوم البديل الذي حضر فيه الطبيب بدلًا من يوم غيابه.</p></div>
+          <button class="btn btn-add no-print" id="addReplacement">＋ إضافة تعويض</button>
+        </div>
+        <div class="table-wrap">
+          <table class="simple-table">
+            <thead><tr><th>#</th><th>اسم الطبيب</th><th>اليوم الأصلي الغائب عنه</th><th>تاريخ التعويض</th><th>ملاحظات</th><th class="no-print">إجراء</th></tr></thead>
+            <tbody id="replacementBody"></tbody>
+          </table>
+          <div class="table-empty" id="emptyReplacements">لا توجد أيام تعويض مسجلة لهذا الشهر.</div>
+        </div>
+      </section>
+
+      <section id="printSheet" class="print-sheet" aria-hidden="true"></section>
+
+      <footer class="footer"><span>Diagnostic Clinic · Attendance Planner</span><span>يتم حفظ البيانات في قاعدة بيانات Supabase</span></footer>
+    </main>
+  </div>
+
+  <dialog id="doctorDialog" class="app-dialog">
+    <form id="doctorForm" method="dialog">
+      <div class="dialog-heading"><div><span class="section-kicker">NEW SCHEDULE ENTRY</span><h3>إضافة طبيب إلى الجدول</h3></div><button type="button" class="close-dialog" data-close="doctorDialog">×</button></div>
+      <label>اسم الطبيب<input id="doctorName" type="text" maxlength="100" placeholder="مثال: د. أحمد محمد" required></label>
+      <label>يوم الحضور الأسبوعي
+        <select id="doctorWeekday" required>
+          <option value="6">السبت</option><option value="0">الأحد</option><option value="1">الاثنين</option><option value="2">الثلاثاء</option><option value="3">الأربعاء</option><option value="4">الخميس</option>
+        </select>
+      </label>
+      <label>ملاحظات اختيارية<textarea id="doctorNotes" rows="2" placeholder="مثال: فترة صباحية"></textarea></label>
+      <div class="dialog-actions"><button type="button" class="btn btn-secondary" data-close="doctorDialog">إلغاء</button><button type="submit" class="btn btn-primary">إضافة الطبيب</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="replacementDialog" class="app-dialog">
+    <form id="replacementForm" method="dialog">
+      <div class="dialog-heading"><div><span class="section-kicker">MAKE-UP DAY</span><h3>تسجيل يوم تعويض</h3></div><button type="button" class="close-dialog" data-close="replacementDialog">×</button></div>
+      <label>اسم الطبيب<input id="replacementDoctor" type="text" list="doctorOptions" maxlength="100" placeholder="اكتب اسم الطبيب" required><datalist id="doctorOptions"></datalist></label>
+      <label>تاريخ اليوم الأصلي الذي غاب عنه<input id="missedDate" type="date"></label>
+      <label>تاريخ الحضور البديل<input id="replacementDate" type="date" required></label>
+      <label>ملاحظات<textarea id="replacementNotes" rows="2" placeholder="ملاحظات اختيارية / الطبيب المشرف  "></textarea></label>
+      <div class="dialog-actions"><button type="button" class="btn btn-secondary" data-close="replacementDialog">إلغاء</button><button type="submit" class="btn btn-primary">حفظ التعويض</button></div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

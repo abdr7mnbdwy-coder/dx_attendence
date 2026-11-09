@@ -1,0 +1,477 @@
+*{box-sizing:border-box} :root{--navy:#0f172a;--navy2:#172338;--cyan:#22c1dc;--cyan-dark:#0891b2;--text:#172033;--muted:#758196;--line:#e7edf4;--surface:#fff;--bg:#f3f6fb;--green:#10b981;--red:#ef4444;--shadow:0 14px 40px rgba(15,23,42,.06)} body{margin:0;background:var(--bg);color:var(--text);font-family:"Cairo",sans-serif;font-size:14px}button,input,select,textarea{font:inherit}button{cursor:pointer}.app-shell{max-width:1600px;margin:auto;min-height:100vh}.topbar{height:82px;background:var(--navy);color:#fff;padding:0 4.5%;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:13px}.brand-mark{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#22d3ee,#0891b2);display:grid;place-items:center;font-size:28px;font-weight:700;box-shadow:0 6px 20px #0891b255}.brand h1{font-size:17px;margin:0;font-weight:800}.brand p{margin:1px 0 0;color:#aab7ca;font-size:11px}.connection-status{display:flex;align-items:center;gap:8px;color:#cbd5e1;font-size:12px}.status-dot{width:8px;height:8px;border-radius:50%;background:#f59e0b}.status-dot.online{background:#34d399;box-shadow:0 0 0 4px #34d39922}main{padding:34px 4.5% 22px}.intro{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:24px}.eyebrow,.section-kicker{font-size:10px;letter-spacing:1.7px;color:var(--cyan-dark);font-weight:800}.intro h2{font-size:25px;margin:5px 0 2px;font-weight:800;color:var(--navy)}.intro p,.section-heading p{color:var(--muted);margin:0;font-size:12px}.month-controls{display:flex;align-items:center;gap:9px;background:#fff;padding:8px;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}.icon-btn{border:0;background:#f1f5f9;color:var(--navy);width:34px;height:34px;border-radius:9px;font-size:24px;line-height:1}.month-label{min-width:125px;text-align:center;display:flex;flex-direction:column}.month-label strong{font-size:14px}.month-label span{font-size:10px;color:var(--muted)}.today-btn{border:0;background:#e7faff;color:#087f9b;border-radius:9px;padding:8px 12px;font-size:11px;font-weight:700}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:20px}.search-wrap{height:44px;max-width:390px;flex:1;background:#fff;border:1px solid var(--line);border-radius:11px;display:flex;align-items:center;padding:0 13px;gap:9px;color:#7d8ba0}.search-wrap>span{font-size:22px}.search-wrap input{border:0;outline:0;flex:1;min-width:0;color:var(--text);background:transparent}.search-wrap button{border:0;background:none;color:#94a3b8;font-size:20px}.toolbar-actions{display:flex;gap:9px}.btn{border:0;border-radius:10px;padding:10px 15px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:10px;transition:.2s}.btn:hover{transform:translateY(-1px)}.btn-primary{background:var(--navy);color:white;box-shadow:0 5px 12px #0f172a20}.btn-primary:hover{background:#1e3150}.btn-secondary{background:#fff;border:1px solid var(--line);color:#344256}.btn-add{background:#e6faff;color:#0785a1}.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:20px}.summary-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:13px;box-shadow:var(--shadow)}.summary-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px}.summary-icon.cyan{background:#e3faff;color:#0891b2}.summary-icon.purple{background:#f1eaff;color:#8b5cf6}.summary-icon.green{background:#e3fbf2;color:#059669}.summary-icon.green2{background:#dcfae9;color:#047857}.summary-icon.red{background:#fdeaea;color:#dc2626}.summary-card span{display:block;color:var(--muted);font-size:11px}.summary-card strong{font-size:21px;color:var(--navy);line-height:1.5}.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-bottom:20px;overflow:hidden}.section-heading{display:flex;align-items:center;justify-content:space-between;padding:20px 22px 15px;gap:15px}.section-heading h3{margin:3px 0 2px;font-size:17px;color:var(--navy)}.legend{display:flex;flex-wrap:wrap;gap:17px;padding:0 22px 12px;color:#718096;font-size:10px}.legend span{display:flex;align-items:center;gap:6px}.legend-dot{width:8px;height:8px;border-radius:50%;display:inline-block}.legend-dot.scheduled{background:var(--cyan)}.legend-dot.today{background:#f59e0b}.legend-dot.present{background:var(--green)}.legend-dot.absent{background:var(--red)}.calendar-scroll{overflow:auto;border-top:1px solid var(--line)}.calendar-table{border-collapse:separate;border-spacing:0;width:100%;min-width:900px;font-size:11px}.calendar-table th,.calendar-table td{border-left:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;padding:8px 5px;min-width:37px;height:43px}.calendar-table th{background:#f8fafc;color:#607087;font-weight:800;position:sticky;top:0;z-index:1}.calendar-table th:first-child,.calendar-table td:first-child{position:sticky;right:0;z-index:2;background:#f8fafc;min-width:105px;width:105px}.calendar-table th:first-child{z-index:3}.calendar-table th:last-child,.calendar-table td:last-child{border-left:0}.calendar-table .day-heading{background:#f0f5fa;color:var(--navy);font-size:12px}.calendar-table .doctor-cell{text-align:right;padding:7px 11px;background:#fff!important;min-width:180px;width:180px}.doctor-name{font-weight:800;color:#25334a;font-size:11px}.doctor-note{font-size:9px;color:#91a0b4;display:block}.doctor-tools{display:flex;align-items:center;justify-content:space-between;gap:5px}.delete-doctor{border:0;background:transparent;color:#c2cbd7;font-size:16px;padding:0 3px}.delete-doctor:hover{color:#ef4444}.calendar-table td.scheduled-cell{background:#f0fcff;padding:0}.calendar-table td.today-cell{box-shadow:inset 0 0 0 2px #f59e0b}.calendar-table td.outside-cell{background:#fbfcfe;color:#d2d9e3}.calendar-table tr.group-row td{background:#eaf1f7;color:#334155;font-weight:800;text-align:right;padding:8px 14px;height:34px}.calendar-table tr.match-hidden{display:none}.att-toggle{border:0;background:transparent;width:100%;height:100%;min-height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:3px 2px;color:#0785a1;font-weight:800}.att-toggle:hover{background:#d8f6fd}.att-name{font-size:9px;font-weight:800;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.3}.att-mark{font-size:12px;font-weight:800;line-height:1}.calendar-table td.att-present{background:#dcfae9!important}.calendar-table td.att-present .att-toggle{color:#047857}.calendar-table td.att-present .att-toggle:hover{background:#c3f2dc}.calendar-table td.att-absent{background:#fee7e7!important}.calendar-table td.att-absent .att-toggle{color:#b91c1c}.calendar-table td.att-absent .att-toggle:hover{background:#fbd5d5}.empty-state{text-align:center;padding:35px 15px}.empty-illustration{font-size:34px;color:#8ddded}.empty-state h4{margin:6px 0;color:var(--navy)}.empty-state p{margin:0 0 14px;color:var(--muted);font-size:12px}.replacements-panel .section-heading{padding-bottom:17px}.table-wrap{overflow:auto}.simple-table{width:100%;border-collapse:collapse;font-size:11px;min-width:650px}.simple-table th,.simple-table td{padding:12px 16px;text-align:right;border-top:1px solid var(--line)}.simple-table th{background:#f8fafc;color:#718096;font-size:10px}.simple-table td{color:#334155}.simple-table tbody tr:hover{background:#f8fcff}.delete-replacement{border:0;background:#fff0f0;color:#dc5555;border-radius:7px;padding:5px 9px;font-size:10px}.table-empty{text-align:center;padding:18px;color:#9aa6b6;font-size:11px}.footer{display:flex;justify-content:space-between;color:#9aa6b6;font-size:10px;padding:4px 3px 12px}.app-dialog{border:0;border-radius:17px;padding:0;width:min(440px,calc(100% - 28px));box-shadow:0 24px 80px #0f172a40}.app-dialog::backdrop{background:#0b1425a8;backdrop-filter:blur(3px)}.app-dialog form{padding:22px}.dialog-heading{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px}.dialog-heading h3{margin:3px 0 0;color:var(--navy);font-size:18px}.close-dialog{border:0;background:#f1f5f9;border-radius:8px;width:30px;height:30px;font-size:20px;color:#64748b}.app-dialog label{display:block;margin:13px 0;color:#475569;font-size:11px;font-weight:700}.app-dialog input,.app-dialog select,.app-dialog textarea{display:block;width:100%;margin-top:6px;border:1px solid #dfe6ee;border-radius:9px;padding:10px 11px;outline:none;background:#fbfdff;color:var(--text);font-size:12px}.app-dialog input:focus,.app-dialog select:focus,.app-dialog textarea:focus{border-color:#22b8d2;box-shadow:0 0 0 3px #22b8d21a}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:#142238;color:#fff;padding:11px 18px;border-radius:10px;box-shadow:0 8px 30px #0003;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:20}.toast.show{opacity:1;transform:translate(-50%,0)}.toast.error{background:#b42332}.search-match{background:#fff5d9!important}.no-results{padding:18px;text-align:center;color:#94a3b8}.print-sheet{display:none}@media(max-width:760px){.topbar{height:72px;padding:0 18px}main{padding:24px 14px}.intro{align-items:flex-start;flex-direction:column}.intro h2{font-size:21px}.month-controls{width:100%;justify-content:center}.toolbar{align-items:stretch;flex-direction:column}.search-wrap{max-width:none}.toolbar-actions{display:grid;grid-template-columns:1fr 1fr}.summary-grid{gap:8px}.summary-card{padding:11px 9px;gap:8px}.summary-icon{width:32px;height:32px;font-size:16px}.summary-card span{font-size:9px}.summary-card strong{font-size:18px}.section-heading{padding:16px 14px 12px}.section-heading h3{font-size:15px}.section-heading p{font-size:10px}.legend{padding-right:14px}.footer{gap:8px;flex-direction:column}}@media print{@page{size:A4 landscape;margin:8mm}body{background:#fff}.topbar,.intro,.toolbar,.summary-grid,main .panel,main .footer,.toast,.app-dialog{display:none!important}main{padding:0}.print-sheet{display:block!important;color:#000}.print-title{text-align:center;margin:0 0 7px}.print-title h2{font-size:15px;margin:0 0 2px;color:#000}.print-title p{font-size:9px;margin:0;color:#444}.print-table{width:100%;border-collapse:collapse;font-size:9px;table-layout:fixed}.print-table th,.print-table td{border:1px solid #999;padding:2px 3px;text-align:center}.print-table thead th{background:#eee!important;color:#000;font-size:9px;height:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.print-table .print-day{font-weight:800;background:#f3f3f3!important;font-size:10px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.print-table .print-doc{text-align:right;font-weight:700;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.print-cell{height:22px;position:relative}.print-cell .cell-date{position:absolute;top:0;right:2px;font-size:6px;color:#888;line-height:1.5}.print-cell .cell-mark{font-size:11px;font-weight:800}.print-cell.present{background:#dcfae9!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.print-cell.absent{background:#fee7e7!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.print-cell.empty-col{background:#fafafa}}
+/* =========================================
+   Calendar Day Supervisors
+========================================= */
+
+.calendar-day-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 75px;
+  padding: 5px 2px;
+}
+
+.calendar-day-head > strong {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.calendar-day-head > small {
+  font-size: 9px;
+  color: #94a3b8;
+}
+
+.day-supervisors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.supervisor-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  max-width: 100%;
+  padding: 3px 5px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 6px;
+  background: rgba(56, 189, 248, 0.09);
+  color: #38bdf8;
+  font-size: 9px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.supervisor-chip span {
+  line-height: 1.4;
+}
+
+.supervisor-action {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.supervisor-action.delete {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+.add-supervisor-btn {
+  margin-top: 3px;
+  padding: 4px 6px;
+  border: 1px dashed rgba(56, 189, 248, 0.4);
+  border-radius: 5px;
+  background: transparent;
+  color: #38bdf8;
+  font-size: 9px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.add-supervisor-btn:hover {
+  background: rgba(56, 189, 248, 0.12);
+  border-style: solid;
+}
+
+@media print {
+  .add-supervisor-btn,
+  .supervisor-action {
+    display: none !important;
+  }
+
+  .supervisor-chip {
+    color: #000 !important;
+    background: transparent !important;
+    border-color: #ccc !important;
+  }
+}
+
+
+/* =====================================
+   Diagnosis Attendance Print Layout
+===================================== */
+
+.print-title {
+  text-align: center;
+  margin: 0 0 8px;
+  direction: ltr;
+}
+
+.print-title h2 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+  color: #111;
+}
+
+.print-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  direction: rtl;
+  font-family: "Cairo", Arial, sans-serif;
+  color: #111;
+  background: #fff;
+  font-size: 11px;
+}
+
+.print-table .col-day {
+  width: 11mm;
+}
+
+.print-table .col-doctor {
+  width: 34%;
+}
+
+.print-table .col-date {
+  width: auto;
+}
+
+.print-table th,
+.print-table td {
+  border: 1px solid #444;
+  padding: 2px 4px;
+  height: 7mm;
+  box-sizing: border-box;
+}
+
+.print-date-row th {
+  background: #e8e8e8;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  direction: ltr;
+  white-space: nowrap;
+}
+
+.print-day-header,
+.print-doctor-header {
+  background: #e8e8e8;
+  text-align: center;
+  font-weight: 700;
+}
+
+.print-date-row .empty-header {
+  background: #e8e8e8;
+}
+
+.print-doctor-name {
+  text-align: right;
+  direction: rtl;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding-right: 5px;
+}
+
+.print-day-name {
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 700;
+  font-size: 11px;
+  white-space: nowrap;
+  background: #fff;
+}
+
+.print-attendance-cell {
+  text-align: center;
+  vertical-align: middle;
+  background: #fff;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+
+  .print-table {
+    width: 100%;
+    page-break-inside: auto;
+  }
+
+  .print-table tr {
+    page-break-inside: avoid;
+  }
+
+  .print-table th,
+  .print-table td {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .print-date-row {
+    page-break-after: avoid;
+  }
+
+  .print-title {
+    margin-bottom: 8px;
+  }
+}
+
+
+/* Last attendance update under doctor name */
+
+.attendance-last-update {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  font-size: 10px;
+  color: #8291a5;
+  direction: rtl;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.last-update-label {
+  color: #94a3b8;
+}
+
+/* Disabled attendance toggle */
+
+.att-toggle.att-disabled,
+.att-toggle:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.att-toggle:disabled:hover {
+  transform: none;
+}
+
+.print-present-mark {
+  color: #16a34a;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.print-absent-mark {
+  color: #dc2626;
+  font-size: 16px;
+  font-weight: 900;
+}
+.print-replacements-section {
+  margin-top: 30px;
+  page-break-inside: avoid;
+}
+
+.print-replacements-title {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0 0 12px;
+  padding: 10px;
+  border-bottom: 2px solid #334155;
+}
+
+.print-replacements-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 11px;
+}
+
+.print-replacements-table th,
+.print-replacements-table td {
+  border: 1px solid #64748b;
+  padding: 7px 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.print-replacements-table th {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+  font-weight: 800;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.print-replacements-table td {
+  color: #0f172a !important;
+}
+
+@media print {
+  .print-replacements-section {
+    page-break-inside: avoid;
+  }
+
+  .print-replacements-table tr {
+    page-break-inside: avoid;
+  }
+}
+
+
+/* =====================================
+   ONE PAGE PRINT - ATTENDANCE SHEET
+===================================== */
+
+@media print {
+
+  @page {
+    size: A4 landscape;
+    margin: 5mm;
+  }
+
+  html,
+  body {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #fff !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  #printSheet,
+  #printSheet * {
+    visibility: visible !important;
+  }
+
+  #printSheet {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #000 !important;
+    font-family: Arial, sans-serif !important;
+  }
+
+  /* Main title */
+
+  #printSheet .print-title {
+    margin: 0 0 5px !important;
+    padding: 0 !important;
+  }
+
+  #printSheet .print-title h2 {
+    font-size: 15px !important;
+    margin: 0 0 5px !important;
+    padding: 0 !important;
+  }
+
+  /* Main attendance table */
+
+  #printSheet .print-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+    margin: 0 !important;
+    font-size: 8px !important;
+  }
+
+  #printSheet .print-table th,
+  #printSheet .print-table td {
+    padding: 2px 3px !important;
+    height: auto !important;
+    line-height: 1.15 !important;
+    border: 1px solid #555 !important;
+  }
+
+  #printSheet .print-day-header,
+  #printSheet .print-doctor-header {
+    font-size: 8px !important;
+    padding: 3px 2px !important;
+  }
+
+  #printSheet .print-day-name,
+  #printSheet .print-doctor-name {
+    font-size: 8px !important;
+    padding: 2px 3px !important;
+  }
+
+  #printSheet .print-date-header {
+    font-size: 7px !important;
+    padding: 2px 1px !important;
+  }
+
+  #printSheet .print-attendance-cell {
+    padding: 1px !important;
+    height: 15px !important;
+  }
+
+  #printSheet .print-present-mark,
+  #printSheet .print-absent-mark {
+    font-size: 10px !important;
+    line-height: 1 !important;
+  }
+
+  /* Replacement section */
+
+  #printSheet .print-replacements-section {
+    margin-top: 7px !important;
+    padding: 0 !important;
+    page-break-before: auto !important;
+    page-break-after: avoid !important;
+  }
+
+  #printSheet .print-replacements-title {
+    font-size: 11px !important;
+    margin: 0 0 4px !important;
+    padding: 3px !important;
+    border-bottom: 1px solid #555 !important;
+  }
+
+  #printSheet .print-replacements-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+    margin: 0 !important;
+    font-size: 8px !important;
+  }
+
+  #printSheet .print-replacements-table th,
+  #printSheet .print-replacements-table td {
+    padding: 2px 4px !important;
+    line-height: 1.15 !important;
+    border: 1px solid #555 !important;
+  }
+
+  #printSheet .print-replacements-table th {
+    background: #e2e8f0 !important;
+    color: #000 !important;
+  }
+
+  #printSheet .print-replacements-table td {
+    color: #000 !important;
+  }
+
+  /* Keep table rows together */
+
+  #printSheet tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
